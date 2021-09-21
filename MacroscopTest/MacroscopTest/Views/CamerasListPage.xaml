@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MacroscopTest.Views.CamerasListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="stackLayout" Spacing="8" Orientation="Horizontal" Padding="10,4" >
+                <Label Text="Список камер:" Style="{StaticResource headerStyle}" VerticalOptions="Center"/>
+                <Button  x:Name="updateButton"  Text="Обновить" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="updateButton_Clicked"/>
+            </StackLayout>
+            <ListView ItemsSource="{Binding Cameras}" HasUnevenRows="True" SelectionMode="None" HorizontalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Padding="10,6">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Название: " Style="{StaticResource textInList}"/>
+                                        <Label Text="{Binding Name}" Style="{StaticResource textInList}"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Звук: " VerticalOptions="Center" Style="{StaticResource textInList}"/>
+                                        <CheckBox IsChecked="{Binding IsSoundOn}" IsEnabled="False"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="ID сервера: " Style="{StaticResource subtextInList}"/>
+                                        <Label Text="{Binding ServerName}" Style="{StaticResource subtextInList}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
